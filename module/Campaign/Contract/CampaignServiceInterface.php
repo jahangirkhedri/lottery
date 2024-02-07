@@ -13,4 +13,10 @@ interface CampaignServiceInterface
     public function update($id, array $data);
 
     public function delete($id);
+
+    public function isCompleted($campaign): bool;
+
+    public function checkCodeIsCompleted($campaign,$code):bool;
+
+    public function updateCodeCount($campaign,$code);
 }

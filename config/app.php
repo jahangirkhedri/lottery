@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Module\Campaign\CampaignServiceProvider;
+use Module\Lottery\LotteryServiceProvider;
 
 return [
 
@@ -171,7 +172,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         CampaignServiceProvider::class,
-
+        LotteryServiceProvider::class,
 
     ])->toArray(),
 

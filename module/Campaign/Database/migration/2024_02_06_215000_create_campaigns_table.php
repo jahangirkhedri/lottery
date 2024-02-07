@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('s_count')->default(0);//silver count
             $table->integer('b_count')->default(0);//bronze count
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
