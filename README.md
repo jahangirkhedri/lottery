@@ -10,7 +10,7 @@ This bash file build docker, install packages, generate key and run migration an
 
 # Endpoints
 
-There is a postman export for use endpoints on 
+There is a postman export for use endpoints on  `lottery.postman_collection.json`
 
 * login
 
