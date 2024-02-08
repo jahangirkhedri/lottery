@@ -34,7 +34,7 @@ class LotteryService implements LotteryServiceInterface
 
 
         // generate new code
-        $code = $this->generateUniqueCode();
+        $code = $this->generateCode();
 
         //check this code type is completed
         if(!is_null($code) && $this->campaignService->checkCodeIsCompleted($campaign, $code)){
@@ -64,10 +64,9 @@ class LotteryService implements LotteryServiceInterface
         ])->first();
     }
 
-    public function generateUniqueCode()
+    public function generateCode()
     {
-        $randomNumber = mt_rand(1, 2);
-        dump($randomNumber);
+        $randomNumber = mt_rand(1, 10000);
         $str = Str::random(5);
         if ($randomNumber == 1) {
             return "G-" . $str; // Gold winner with 1/10000 probability

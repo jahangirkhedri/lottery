@@ -19,9 +19,4 @@ class Campaign extends Model
     ];
     protected $fillable = ['name', 'description', 'max_code', 'g_count', 's_count', 'b_count'];
 
-
-//    protected static function newFactory()
-//    {
-//        return CampaignFactory::new();
-//    }
 }

@@ -42,7 +42,7 @@ class CampaignService implements CampaignServiceInterface
     public function delete($id)
     {
         $campaign = $this->find($id);
-        $campaign->delet();
+        $campaign->delete();
     }
 
     public function isCompleted($campaign): bool

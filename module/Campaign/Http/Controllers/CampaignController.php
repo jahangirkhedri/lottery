@@ -5,6 +5,7 @@ namespace Module\Campaign\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Module\Campaign\Contract\CampaignServiceInterface;
+use Module\Campaign\Http\Requests\CampaignFromRequest;
 
 class CampaignController extends Controller
 {
@@ -28,14 +29,14 @@ class CampaignController extends Controller
     }
 
     // Create a new campaign
-    public function store(Request $request)
+    public function store(CampaignFromRequest $request)
     {
         $campaign = $this->campaignService->store($request->all());
         return response()->json($campaign, 201);
     }
 
     // Update an existing campaign
-    public function update(Request $request, $id)
+    public function update(CampaignFromRequest $request, $id)
     {
         $campaign = $this->campaignService->update($id, $request->all());
         return response()->json($campaign);

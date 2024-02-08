@@ -11,5 +11,5 @@ interface LotteryServiceInterface
 
     public function checkUserLottery($campaign, $user);
 
-    public function generateUniqueCode();
+    public function generateCode();
 }

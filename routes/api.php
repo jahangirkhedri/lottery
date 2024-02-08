@@ -17,7 +17,7 @@ use Module\Campaign\Http\Controllers\CampaignController;
 */
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::apiResource('campaigns', CampaignController::class);
+   Route::post('logout',[AuthController::class,'logout']);
 });
 Route::post('login',[AuthController::class,'login']);
 

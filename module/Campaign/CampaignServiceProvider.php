@@ -4,6 +4,7 @@ namespace Module\Campaign;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Module\Campaign\Contract\CampaignServiceInterface;
@@ -11,6 +12,7 @@ use Module\Campaign\Services\CampaignService;
 
 class CampaignServiceProvider extends ServiceProvider
 {
+    protected string $routeNamespaces = "Module\Campaign\Http\Controllers";
     /**
      * Register services.
      */
@@ -25,6 +27,7 @@ class CampaignServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::prefix('api')->namespace($this->routeNamespaces)
+            ->group(__DIR__ . "/routes/api.php");
     }
 }
