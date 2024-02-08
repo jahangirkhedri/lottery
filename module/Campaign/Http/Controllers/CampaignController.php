@@ -24,7 +24,7 @@ class CampaignController extends Controller
     // Get a specific campaign by ID
     public function show($id)
     {
-        $campaign = $this->campaignService->find($id);
+        $campaign = $this->campaignService->show($id);
         return response()->json($campaign);
     }
 

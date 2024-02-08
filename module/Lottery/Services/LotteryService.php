@@ -32,6 +32,7 @@ class LotteryService implements LotteryServiceInterface
             ];
         }
 
+        $message = "";
 
         // generate new code
         $code = $this->generateCode();
@@ -41,7 +42,7 @@ class LotteryService implements LotteryServiceInterface
                 $code = null;
         }
 
-        $lottery = Lottery::create([
+       Lottery::create([
             'user_id' => $user->id,
             'campaign_id' => $campaign->id,
             'code' => $code,
@@ -50,10 +51,14 @@ class LotteryService implements LotteryServiceInterface
         // update campaign codes
         if (!is_null($code)) {
             $this->campaignService->updateCodeCount($campaign,$code);
+            $message = "Your win!";
+        }else{
+            $message = "You didn't win!";
         }
-
-
-        return $lottery;
+        return [
+          "code" => $code ?? "",
+          "message" => $message
+        ];
     }
 
     public function checkUserLottery($campaign, $user)

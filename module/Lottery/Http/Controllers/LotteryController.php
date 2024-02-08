@@ -16,6 +16,7 @@ class LotteryController extends Controller
     public function lottery($campaignId)
     {
         $campaign = $this->campaignService->find($campaignId);
-        return $this->lotteryService->lottery($campaign, Auth::user());
+        $response = $this->lotteryService->lottery($campaign, Auth::user());
+        return response()->json($response);
     }
 }

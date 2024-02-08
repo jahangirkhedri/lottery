@@ -3,6 +3,7 @@
 namespace Module\Campaign\Services;
 
 use Module\Campaign\Contract\CampaignServiceInterface;
+use Module\Campaign\Http\Resources\CampaignResource;
 use Module\Campaign\Models\Campaign;
 
 class CampaignService implements CampaignServiceInterface
@@ -10,7 +11,7 @@ class CampaignService implements CampaignServiceInterface
 
     public function all()
     {
-        return Campaign::all();
+        return CampaignResource::collection(Campaign::all());
     }
 
     public function find($id)
@@ -18,13 +19,20 @@ class CampaignService implements CampaignServiceInterface
         return Campaign::findOrFail($id);
     }
 
+    public function show($id)
+    {
+       $campaign = $this->find($id);
+        return new CampaignResource($campaign);
+    }
+
     public function store(array $data)
     {
-        return Campaign::create([
+        $campaign = Campaign::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'max_code' => $data['max_code']
         ]);
+        return new CampaignResource($campaign);
     }
 
     public function update($id, array $data)
@@ -36,7 +44,7 @@ class CampaignService implements CampaignServiceInterface
             'max_code' => $data['max_code']
         ]);
 
-        return $campaign;
+        return new CampaignResource($campaign);
     }
 
     public function delete($id)
