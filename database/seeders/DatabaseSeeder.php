@@ -15,9 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'email' => "user@gmail.com"
-        ]);
+        if(!User::count()){
+            User::factory()->create([
+                'email' => "user@gmail.com"
+            ]);
+        }
+
          User::factory(10)->create();
          resolve(CampaignSeeder::class)->run();
 
